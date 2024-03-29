@@ -1,13 +1,18 @@
-export default function ListItem(props) {
+import Link from 'next/link';
 
+export default function ListItem(props) {
   const { result } = props;
-  
+
   return (
-    result?.map((el, i) => (
-      <div className="list-item" key={i}>
-        <h4>{el.title}</h4>
-        <p>1월 1일</p>
-      </div>
-   ))
-  )
+    <div className="list-bg">
+      {result?.map((item, i) => (
+        <div className="list-item" key={i}>
+          <Link href={`/detail/${item._id}`}>
+            <h4>{item.title}</h4>
+          </Link>
+          <p>1월 1일</p>
+        </div>
+      ))}
+    </div>
+  );
 }
